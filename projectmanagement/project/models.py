@@ -23,4 +23,5 @@ class Income(models.Model):
         related_name='income', on_delete=models.CASCADE)
     user_id = models.ForeignKey(User, \
         related_name='income', on_delete=models.CASCADE)
+    income = models.IntegerField()
     date = models.DateField()
