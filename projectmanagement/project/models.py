@@ -9,7 +9,7 @@ class User(models.Model):
         return self.user_name
 
 class Project(models.Model):
-    user_id = models.ForeignKey(User,\
+    user = models.ForeignKey(User,\
         related_name='project', on_delete=models.CASCADE)
     project_name = models.CharField(max_length=10)
     total_budget = models.IntegerField()
@@ -19,9 +19,9 @@ class Project(models.Model):
         return self.project_name
 
 class Income(models.Model):
-    project_id = models.ForeignKey(Project,\
-        related_name='project_income', on_delete=models.CASCADE)
-    user_id = models.ForeignKey(User, \
-        related_name='user_income', on_delete=models.CASCADE)
+    project = models.ForeignKey(Project,\
+        related_name='project', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, \
+        related_name='user', on_delete=models.CASCADE)
     income = models.IntegerField()
     date = models.CharField(max_length=10)
